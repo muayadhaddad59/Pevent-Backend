@@ -31,6 +31,9 @@ public class Venue {
     @OneToMany(mappedBy = "venue")
     private List<VenueReview> venueReviews = new ArrayList<>();
 
+    @OneToMany(mappedBy = "venue")
+    private List<Wedding> weddings = new ArrayList<>();
+
     public Venue() {}
 
     public Venue(String name, String address, Integer capacity, String city, BigDecimal price) {
@@ -100,5 +103,18 @@ public class Venue {
     public void addVenueReview(VenueReview venueReview) {
         venueReviews.add(venueReview);
         venueReview.setVenue(this);
+    }
+
+    public List<Wedding> getWeddings() {
+        return weddings;
+    }
+
+    public void setWeddings(List<Wedding> weddings) {
+        this.weddings = weddings;
+    }
+
+    public void addWedding(Wedding wedding){
+        weddings.add(wedding);
+        wedding.setVenue(this);
     }
 }

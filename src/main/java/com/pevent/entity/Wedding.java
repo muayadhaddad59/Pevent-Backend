@@ -22,6 +22,10 @@ public class Wedding {
     @Column(precision = 12, scale = 2)
     private BigDecimal budget;
 
+    @ManyToOne
+    @JoinColumn(name = "venue_id")
+    private Venue venue;
+
     public Wedding() {
     }
 
@@ -70,5 +74,13 @@ public class Wedding {
 
     public void setBudget(BigDecimal budget) {
         this.budget = budget;
+    }
+
+    public Venue getVenue() {
+        return venue;
+    }
+
+    public void setVenue(Venue venue) {
+        this.venue = venue;
     }
 }
