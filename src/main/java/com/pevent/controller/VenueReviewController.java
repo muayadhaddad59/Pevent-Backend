@@ -22,7 +22,6 @@ public class VenueReviewController {
         return venueReviewService.findAll();
     }
 
-
     @GetMapping("/{id}")
     public VenueReview findById(@PathVariable Long id) {
         return venueReviewService.findById(id);
