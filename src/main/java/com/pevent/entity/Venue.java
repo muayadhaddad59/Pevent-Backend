@@ -1,8 +1,11 @@
 package com.pevent.entity;
 
+import com.pevent.repository.VenueRepository;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "venues")
@@ -24,6 +27,9 @@ public class Venue {
 
     @Column(precision = 10, scale = 2)
     private BigDecimal price;
+
+    @OneToMany(mappedBy = "venue")
+    private List<VenueReview> venueReviews = new ArrayList<>();
 
     public Venue() {}
 
@@ -81,5 +87,18 @@ public class Venue {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public List<VenueReview> getVenueReviews() {
+        return venueReviews;
+    }
+
+    public void setVenueReviews(List<VenueReview> venueReviews) {
+        this.venueReviews = venueReviews;
+    }
+
+    public void addVenueReview(VenueReview venueReview) {
+        venueReviews.add(venueReview);
+        venueReview.setVenue(this);
     }
 }
