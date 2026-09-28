@@ -35,6 +35,9 @@ public class Vendor {
     @JoinColumn(name = "category_id", nullable = false)
     private VendorCategory category;
 
+    @OneToMany(mappedBy = "vendor")
+    private List<VendorReview> vendorReviews = new ArrayList<>();
+
     public Vendor() {
     }
 
@@ -118,5 +121,18 @@ public class Vendor {
 
     public void setCategory(VendorCategory category) {
         this.category = category;
+    }
+
+    public List<VendorReview> getVendorReviews() {
+        return vendorReviews;
+    }
+
+    public void setVendorReviews(List<VendorReview> vendorReviews) {
+        this.vendorReviews = vendorReviews;
+    }
+
+    public void addVendorReview(VendorReview vendorReview) {
+        vendorReviews.add(vendorReview);
+        vendorReview.setVendor(this);
     }
 }
