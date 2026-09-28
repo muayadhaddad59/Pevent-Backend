@@ -1,5 +1,6 @@
 package com.pevent.controller;
 
+import com.pevent.dto.CreateWeddingRequest;
 import com.pevent.entity.Wedding;
 import com.pevent.service.WeddingService;
 import jakarta.validation.Valid;
@@ -27,8 +28,8 @@ public class WeddingController {
     }
 
     @PostMapping
-    public Wedding save(@Valid @RequestBody Wedding wedding) {
-        return weddingService.save(wedding);
+    public Wedding save(@Valid @RequestBody CreateWeddingRequest request) {
+        return weddingService.save(request);
     }
 
     @DeleteMapping("/{id}")
