@@ -10,10 +10,10 @@ public record CreateVenueReviewRequest(
         @Min(1)
         @Max(5)
         Integer rating,
-
+        
         @NotBlank
         String comment,
-
+        
         @NotNull
         Long venueId
 ) {
